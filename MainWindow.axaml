@@ -1,0 +1,28 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:avaloniaVirtualizedStackPanelInvalidEstimate="clr-namespace:AvaloniaVirtualizedStackPanelInvalidEstimate"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="AvaloniaVirtualizedStackPanelInvalidEstimate.MainWindow"
+        x:DataType="avaloniaVirtualizedStackPanelInvalidEstimate:MainWindowViewModel"
+        Title="AvaloniaVirtualizedStackPanelInvalidEstimate">
+   <DockPanel>
+     <Button DockPanel.Dock="Top" Command="{CompiledBinding SelectRowCommand}" CommandParameter="0">Select row 0</Button>
+     <Button DockPanel.Dock="Top" Command="{CompiledBinding SelectRowCommand}" CommandParameter="99">Select row 99</Button>
+     <ListBox ItemsSource="{CompiledBinding Items}"
+              SelectedItem="{CompiledBinding SelectedRow}"
+              ScrollViewer.HorizontalScrollBarVisibility="Visible"
+              ScrollViewer.AllowAutoHide="False"
+              Name="ListBox">
+       <ListBox.ItemTemplate>
+         <DataTemplate>
+           <StackPanel Orientation="Horizontal">
+             <Border Width="{CompiledBinding Indent}" />
+             <TextBlock Text="{CompiledBinding Text}" Name="PART_Text" />
+           </StackPanel>
+         </DataTemplate>
+       </ListBox.ItemTemplate>
+     </ListBox>
+  </DockPanel>
+</Window>
